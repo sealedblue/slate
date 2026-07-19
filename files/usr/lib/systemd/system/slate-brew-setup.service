@@ -1,0 +1,8 @@
+[Unit]
+ConditionPathExists=/usr/lib/slate/.linuxbrew
+ConditionPathExists=!/home/linuxbrew/.linuxbrew
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkdir -p /home/linuxbrew
+ExecStart=/usr/bin/cp -a /usr/lib/slate/.linuxbrew /home/linuxbrew/.

@@ -1,0 +1,23 @@
+_default:
+    just --list
+
+setup:
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    ! [ -e ~/.config/slate/setup-done ] || exit 0
+    export HOMEBREW_NO_ASK=1
+    brew tap ublue-os/tap
+    brew trust ublue-os/tap
+    brew install visual-studio-code-linux
+    brew install nushell
+    brew install carapace
+    mkdir -p ~/.config/slate
+    touch ~/.config/slate/setup-done
+
+upgrade:
+    flatpak update
+    ! type brew || brew upgrade
+    ! type uv || uv tool upgrade --all
+    ! type cargo-install-update || cargo install-update --all
+    ! type npm || npm update -g
+    ! type gem || gem update

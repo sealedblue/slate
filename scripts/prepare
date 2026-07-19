@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+set -euxo pipefail
+dnf -y install niri mako swaybg swayidle polkit-kde kf6-kirigami udiskie \
+    libappindicator-gtk3 brightnessctl pavucontrol blueman network-manager-applet \
+    qemu-system-x86 qemu-img \
+    @development-tools bubblewrap
+dnf remove -y gnome-software gnome-software-rpm-ostree
+useradd slate
+echo "slate    ALL=(ALL)   NOPASSWD: ALL" >/etc/sudoers.d/slate
+sudo -u slate /scripts/brew
+rm -f /etc/sudoers.d/slate
+userdel -r slate
+mkdir -p /usr/lib/slate
+mv /home/linuxbrew/.linuxbrew /usr/lib/slate/.linuxbrew
+rm -rf /home/linuxbrew

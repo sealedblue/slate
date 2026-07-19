@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+set -euxo pipefail
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+export HOMEBREW_NO_ASK=1
+brew tap ublue-os/tap
+brew trust ublue-os/tap
+brew install visual-studio-code-linux
+brew install nushell
+brew install carapace
+brew install just
