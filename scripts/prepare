@@ -5,10 +5,10 @@ dnf -y install niri mako swaybg swayidle polkit-kde kf6-kirigami udiskie \
     qemu-system-x86 qemu-img \
     @development-tools bubblewrap
 dnf remove -y gnome-software gnome-software-rpm-ostree
+mkdir -p /var/home/linuxbrew/.linuxbrew
 useradd slate
-echo "slate    ALL=(ALL)   NOPASSWD: ALL" >/etc/sudoers.d/slate
+chown -R slate:slate /home/linuxbrew
 sudo -u slate /scripts/brew
-rm -f /etc/sudoers.d/slate
 userdel -r slate
 mkdir -p /usr/lib/slate
 mv /home/linuxbrew/.linuxbrew /usr/lib/slate/.linuxbrew
