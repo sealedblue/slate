@@ -2,7 +2,7 @@
 set -euxo pipefail
 . ./env.sh
 
-if [[ "$TAG" != "$MAIN_BRANCH" ]] && ! [[ -e "diverge-$TAG" ]]; then
+if [[ "$CURRENT_BRANCH" != "$MAIN_BRANCH" ]] && ! [[ -e "diverge-$CURRENT_BRANCH" ]]; then
     skopeo copy --sign-by-sigstore-private-key "${SIGSTORE_PREFIX}.private" \
         --sign-passphrase-file "${SIGSTORE_PREFIX}.passphrase" \
         --digestfile "${DIGEST_NAME}.digest" \
@@ -10,6 +10,7 @@ if [[ "$TAG" != "$MAIN_BRANCH" ]] && ! [[ -e "diverge-$TAG" ]]; then
 else
     podman pull  "$BASE_IMAGE"
     podman build \
+        $BUILD_ARGS \
         --security-opt=label=disable \
         --build-arg "BASE_IMAGE=$BASE_IMAGE" \
         -t "${IMAGE}" .

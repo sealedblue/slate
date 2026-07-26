@@ -10,6 +10,6 @@ DIFF=$(printf '%s\n%s\n' "$(pkg-list "$BASE_IMAGE")" "$(pkg-list "$IMAGE")" | so
 set -x
 podman run --rm "$IMAGE" dnf check-upgrade $DIFF
 
-DIGEST1="$(podman image inspect --format '{{index .Annotations "org.opencontainers.image.base.digest"}}' "${IMAGE}")"
-DIGEST2="$(podman image inspect --format {{.Digest}} "$BASE_IMAGE")"
-[ "${DIGEST1}" = "${DIGEST2}" ]
+DIGEST="$(podman image inspect --format '{{index .Annotations "org.opencontainers.image.base.digest"}}' "${IMAGE}")"
+podman pull "${BASE_IMAGE}"
+podman inspect "${BASE_IMAGE}" | jq -e --arg digest "${BASE_IMAGE_NAME}@${DIGEST}" '.[].RepoDigests | any(. == $digest)'

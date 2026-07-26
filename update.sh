@@ -1,14 +1,11 @@
 #!/usr/bin/bash
 set -euxo pipefail
 . ./env.sh
-CURRENT_BRANCH="$TAG"
+OLD_BRANCH="$CURRENT_BRANCH"
 git switch "$MAIN_BRANCH"
 . ./env.sh
 
-SKIP=true
-./check.sh || SKIP=false
-
-$SKIP || ./build.sh
+./check.sh || ./build.sh
 
 BRANCHES=$(git ls-remote -qb | sed 's|.*\srefs/heads/||')
 
@@ -20,7 +17,9 @@ for BRANCH in $BRANCHES; do
     if [ -e "diverge-$BRANCH" ]; then
         ./check.sh || ./build.sh
     else
-        if ! $SKIP; then
+        MAIN_DIGEST=$(skopeo inspect --format='{{.Digest}}' "docker://${MAIN_IMAGE}")
+        IMAGE_DIGEST=$(skopeo inspect --format='{{.Digest}}' "docker://${IMAGE}")
+        if [ "$MAIN_DIGEST" != "$IMAGE_DIGEST" ]; then
             skopeo copy --sign-by-sigstore-private-key "${SIGSTORE_PREFIX}.private" \
                 --sign-passphrase-file "${SIGSTORE_PREFIX}.passphrase" \
                 --digestfile "${DIGEST_NAME}.digest" \
@@ -31,4 +30,4 @@ for BRANCH in $BRANCHES; do
         fi
     fi
 done
-git switch "$CURRENT_BRANCH"
+git switch "$OLD_BRANCH"
