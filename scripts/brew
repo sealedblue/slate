@@ -6,6 +6,3 @@ export HOMEBREW_NO_ASK=1
 brew tap ublue-os/tap
 brew trust ublue-os/tap
 brew install visual-studio-code-linux
-brew install nushell
-brew install carapace
-brew install just
