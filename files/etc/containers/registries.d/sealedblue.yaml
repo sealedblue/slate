@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/sealedblue:
+    use-sigstore-attachments: true
