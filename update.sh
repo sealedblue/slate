@@ -18,7 +18,7 @@ for BRANCH in $BRANCHES; do
         ./check.sh || ./build.sh
     else
         MAIN_DIGEST=$(skopeo inspect --format='{{.Digest}}' "docker://${MAIN_IMAGE}")
-        IMAGE_DIGEST=$(skopeo inspect --format='{{.Digest}}' "docker://${IMAGE}")
+        IMAGE_DIGEST=$(skopeo inspect --format='{{.Digest}}' "docker://${IMAGE}") || IMAGE_DIGEST="invalid"
         if [ "$MAIN_DIGEST" != "$IMAGE_DIGEST" ]; then
             skopeo copy --sign-by-sigstore-private-key "${SIGSTORE_PREFIX}.private" \
                 --sign-passphrase-file "${SIGSTORE_PREFIX}.passphrase" \
