@@ -6,6 +6,7 @@ dnf -y install niri mako swaybg swayidle polkit-kde kf6-kirigami udiskie \
     @development-tools bubblewrap
 dnf remove -y gnome-software gnome-software-rpm-ostree
 dnf -y install --allowerasing vim-default-editor
+sed -i 's|^Exec=|&/usr/bin/env XDG_CURRENT_DESKTOP=GNOME |' /usr/share/applications/org.gnome.Settings.desktop
 mkdir -p /var/home/linuxbrew/.linuxbrew
 useradd slate
 chown -R slate:slate /home/linuxbrew
