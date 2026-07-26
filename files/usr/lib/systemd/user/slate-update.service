@@ -1,0 +1,7 @@
+[Unit]
+After=graphical-session.target
+Requisite=graphical-session.target
+ConditionUser=1000
+
+[Service]
+ExecStart=/usr/bin/alacritty -e /usr/bin/slate-update
