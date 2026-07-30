@@ -5,4 +5,3 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 export HOMEBREW_NO_ASK=1
 brew tap ublue-os/tap
 brew trust ublue-os/tap
-brew install visual-studio-code-linux
