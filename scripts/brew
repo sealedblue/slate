@@ -4,4 +4,3 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 export HOMEBREW_NO_ASK=1
 brew tap ublue-os/tap
-brew trust ublue-os/tap
