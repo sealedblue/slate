@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/hbdesiato/bnx:
+    use-sigstore-attachments: true
