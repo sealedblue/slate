@@ -17,3 +17,7 @@ userdel -r slate
 mkdir -p /usr/lib/slate
 mv /home/linuxbrew/.linuxbrew /usr/lib/slate/.linuxbrew
 rm -rf /home/linuxbrew
+KARGS="quiet rhgb"
+! [ -e /etc/kernel/cmdline ] || KARGS="$(cat /etc/kernel/cmdline) $KARGS"
+mkdir -p /etc/kernel
+echo "$KARGS" > /etc/kernel/cmdline
