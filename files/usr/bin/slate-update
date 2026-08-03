@@ -1,5 +1,5 @@
 #!/bin/sh
 HOMEBREW_NO_ASK=1 brew upgrade
 flatpak update -y
-sudo slate-bootc-upgrade
+slate-bootc-upgrade
 exec bash
