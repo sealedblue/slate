@@ -1,0 +1,7 @@
+#!/bin/sh
+flatpak install -y io.github.ungoogled_software.ungoogled_chromium
+mkdir -p ~/.local/bin
+cat > ~/.local/bin/slate-browser <<EOC
+#!/bin/sh
+exec flatpak run io.github.ungoogled_software.ungoogled_chromium --new-window $@
+EOC
