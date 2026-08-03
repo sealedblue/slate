@@ -1,0 +1,7 @@
+#!/bin/sh
+brew install nushell
+mkdir -p ~/.local/bin
+cat > ~/.local/bin/slate-shell <<EOC
+#!/bin/sh
+exec nu $@
+EOC
