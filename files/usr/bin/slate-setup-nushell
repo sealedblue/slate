@@ -5,3 +5,4 @@ cat > ~/.local/bin/slate-shell <<EOC
 #!/bin/sh
 exec nu $@
 EOC
+chmod a+x ~/.local/bin/slate-shell

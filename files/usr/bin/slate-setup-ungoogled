@@ -5,3 +5,4 @@ cat > ~/.local/bin/slate-browser <<EOC
 #!/bin/sh
 exec flatpak run io.github.ungoogled_software.ungoogled_chromium --new-window $@
 EOC
+chmod a+x ~/.local/bin/slate-browser
