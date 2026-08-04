@@ -1,5 +1,5 @@
 #!/bin/sh
-brew install nushell
+brew install nushell fish
 mkdir -p ~/.local/bin
 cat > ~/.local/bin/slate-shell <<EOC
 #!/bin/sh
