@@ -1,0 +1,4 @@
+#!/bin/sh
+mkdir -p ~/.config/niri
+cp /etc/niri/config.kdl ~/.config/niri/.
+sed -i '\|// skip-at-startup|s|//||' ~/.config/niri/config.kdl
