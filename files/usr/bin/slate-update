@@ -2,4 +2,4 @@
 HOMEBREW_NO_ASK=1 brew upgrade
 flatpak update -y
 slate-bootc-upgrade
-exec bash
+exec slate-shell
