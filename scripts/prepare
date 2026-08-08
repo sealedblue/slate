@@ -4,7 +4,7 @@ dnf -y copr enable @ai-ml/nvidia-container-toolkit
 dnf -y install niri mako swaybg swayidle polkit-kde kf6-kirigami udiskie \
     libappindicator-gtk3 brightnessctl pavucontrol blueman network-manager-applet \
     nvidia-container-toolkit nvidia-container-toolkit-selinux \
-    tpm2-pkcs11-tools tpm2-pkcs11 \
+    tpm2-pkcs11-tools tpm2-pkcs11 gnutls-utils pkcs11-provider \
     qemu-system-x86 qemu-img mkosi \
     @development-tools bubblewrap
 dnf remove -y gnome-software gnome-software-rpm-ostree
