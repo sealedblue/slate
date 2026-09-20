@@ -1,2 +1,2 @@
 #!/bin/sh
-exec slate-terminal-fallback -e slate-shell $@
+exec slate-terminal-fallback -e slate-shell "$@"

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec firefox --new-window $@
+exec firefox --new-window "$@"
