@@ -1,0 +1,2 @@
+%wheel        ALL=(ALL)       NOPASSWD: /usr/bin/slate-bootc-status
+%wheel	      ALL=(ALL)	      NOPASSWD:	/usr/bin/slate-bootc-upgrade

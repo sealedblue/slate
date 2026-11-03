@@ -1,0 +1,5 @@
+#!/bin/sh
+HOMEBREW_NO_ASK=1 brew upgrade
+flatpak update -y
+slate-bootc-upgrade
+exec slate-shell

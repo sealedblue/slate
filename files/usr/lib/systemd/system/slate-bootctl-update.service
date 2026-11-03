@@ -1,0 +1,9 @@
+[Unit]
+ConditionPathExists=/usr/lib/systemd/boot/efi
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bootctl update
+
+[Install]
+WantedBy=multi-user.target
